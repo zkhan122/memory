@@ -118,8 +118,23 @@ public boolean resourceRequest(int i, int pavail[], int palloc[][], int pneed []
 	/*
 	 * TODO add code here 
 	 */
-	
-	return false;
+  if (req[i] < need[i]) {
+    if (req[i] < pavail[i]) {
+      pavail[i] = pavail[i] - req[i];
+      palloc[i] = palloc[i] + req[i];
+      pneed[i] = pneed[i] - req[i];
+      
+      return true; // allocation completed
+    } else {
+      wait();
+    }
+  } else {
+    throw new ResourceException();
+  }
+  
+  for ()
+  
+  return false; // allocation failed;
     
 }
 
